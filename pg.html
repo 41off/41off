@@ -684,9 +684,7 @@ ul{list-style-type: disc; color:red
 
 <body onload="onload();">
 
- <button onclick="window.location.href = 'https://41off.github.io/41off/pg.html';" target="_blank">[\+/]</button>
-
-  <div id="stage">
+   <div id="stage">
   
      <video id="video" controls
                     onclick="this.paused? ClickPause():ClickStart();" onended="onVideoEnded();">
@@ -714,7 +712,9 @@ ul{list-style-type: disc; color:red
             <button class="timerbutton timerbutton5" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
-            <button class="timerbutton timerbutton6" onclick="window.location.href = 'https://41off.github.io/41off/pg.html';" target="_blank">[\+/]</button>
+            <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/pg.html");return false;'>[\+/]</button>
+            
+        <!--    href="#" onclick='window.open("https://41off.github.io/41off/pg.html");return false;' -->
          </div> 
       
               
