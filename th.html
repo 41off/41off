@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>TH Player</title>
+    <title>TH Video Player</title>
     
 <meta  name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="main.css" />
 
 <style type="text/css" media="screen">
-
 body {
  background: transparent;
  /*background-image:url('224830242-black-and-blue-abstract-wallpaper.jpg')*/
@@ -21,8 +20,6 @@ body {
     -khtml-background-size: 100%;
     color: white
 }
-
-
 .footer {
     position:absolute;
     right: 1%;
@@ -44,16 +41,13 @@ body {
     bottom: 100px;
     top: 10%
 }
-
 .footer:hover {
  background-color: #C0C0C0;
  border-color: lime;
  opacity: 1;
  color: black;
  transition: opacity 2s;
-
 }
-
 .timer {
     position:absolute;
     border:3px #666666 solid;
@@ -72,40 +66,36 @@ body {
     display: block;
     min-width: 150px;
     left:40%;    
-    top: 11%;
+    top: 10%;
 }
-
 .timer:hover {
     border:3px red solid;
     border-radius: 20px;
     background-color: #555555; 
     color: white;
 }
-
 .timerbar {
     position: absolute;
     display: block;
-    min-width:90%;
-    left:3.5%;
-    right: 3%;
+    left:6.5%;
+    right: 5.5%;
     top: 3.5%;
-    height: 32px;
-    width:93.5%;
+    height: 37px;
+    width:88%;
+    opacity: .25;
+    transition: opacity 10s;
     background-color: transparent;
-    border: 3px transparent;
-    border-radius: 10px;
-    border-style: double;
+    border: 2px;
+    border-color: transparent;
+    border-radius: 8px;
+    border-style: solid;
 }
-
 .timerbar:hover {
-    background-color: #C0C0C0;
-    border: 3px lime;
-    border-radius: 10px;
-    border-style: double;
+    background-color: #a8a9ad;
+    border-color: white;
     opacity: 1;
     transition: opacity 2s;
 }
-
 .timercontrol {
     position:absolute;
     background-color: black;
@@ -123,112 +113,106 @@ body {
     margin-bottom: 2px;
     top: 40px
 }
-
 .timercontrol:hover {
  background-color: #C0C0C0;
  border: 5px pink;
  border-style: dashed;
  color: black;
 }
-
 .timerbutton {
     text-align: center;
     text-decoration: none;
     font-size: 13px;
+    
     line-height:2px;
     margin: 0px 0px;
+    margin-top: 4px;
     padding-top:1px;
     padding-bottom:1px;
     padding-left:3px;
-    width: 65px; 
+    padding-right:3px;
+    width: 62px; 
     height: 30px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
     border: 4px;
 }
-
-
 .timerbutton1 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color: red;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
-
 .timerbutton1:hover {
     border-color: lime;
     background-color: #ff0000;
     color: white;
 }
-
 .timerbutton2 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color: blue;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
-
 .timerbutton2:hover {
     border-color: lime;
     background-color: #008CBA;
     color: white;
 }
-
 .timerbutton3 {
-    background-color: black; 
-    color: white;
-    border-color:  fuchsia;
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
     width: 75px; height: 30px;
 }
-
 .timerbutton3:hover {
     border-color: lime;
     background-color: #f44336;
     color: white;
 }
-
 .timerbutton4 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color:  aqua;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
-
 .timerbutton4:hover {
     border-color: lime;
     background-color: #e7e7e7; 
     color: gray
 }
-
 .timerbutton5 {
-    background-color: black; 
-    color: white;
-    border-color: gold;
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
-
 .timerbutton5:hover {
     border-color: lime;
     background-color: blue; 
     color: white;
 }
-
 .timerbutton6 {
     background-color: black; 
     color: white;
     border-color: lime;
     border-radius: 10px;
     border-style:double;
-    width: 40x
+    width: 40x;
+    Margin: auto;
 }
-
 .timerbutton6:hover {
     border-color: blue;
     background-color: white; 
@@ -241,21 +225,19 @@ body {
   position:relative;
   overflow:hidden;
   margin:0;
-  border: 5px;
-  border-color:lime;
-  border-style:double;
-  border-radius: 10px;
+  border: 4px;
+  border-color:#0066CD;
+  border-style:solid;
+  border-radius: 10x;
 }
-
 #stage span{font-size:20px;color:#666;display:block;padding:2em;}
-
 #video{
   position: relative;
   
-  border: 5px;
+  border: 4px;
   border-color:gold;
-  border-style:double;
-  border-radius: 10px;
+  border-style:solid;
+  border-radius: 4px;
   width: 99.25%;
   height: auto;
   padding-bottom: 0px;
@@ -285,7 +267,6 @@ body {
     bottom: 100px;
     top: 25%
 }
-
 .controls:hover {
  background-color: #C0C0C0;
  border-color: lime;
@@ -293,7 +274,6 @@ body {
  color: black;
  transition: opacity 2s;
 }
-
 .playlist {
     display:inline-block;
     position:absolute;
@@ -316,7 +296,6 @@ body {
     bottom: 100px;
     top: 25%
 }
-
 .playlist:hover {
    background-color: #C0C0C0;
    border-color: lime;
@@ -326,7 +305,6 @@ body {
    text-decoration:underline;
    transition: opacity 2s;
 }
-
 .playlistbutton {
     text-align: left;
     background-color: transparent;
@@ -342,12 +320,10 @@ body {
     color:white;
     border-color:transparent
 }
-
 .playlistbutton:hover {
     color:blue;
     text-decoration:underline 
 }
-
 .zoomin {
     background-color: black; 
     color: white;
@@ -368,13 +344,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .zoomin:hover {
     border-color: gold;
     background-color:  lime; 
-    color: white
+    color: black
 }
-
 .zoomout {
     background-color: black; 
     color: white;
@@ -394,15 +368,12 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
     border: 4px;
-
 }
-
 .zoomout:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .play {
     background-color: black; 
     color: white;
@@ -423,15 +394,12 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
     border: 4px;
-
 }
-
 .play:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .left {
     background-color: black; 
     color: white;
@@ -452,13 +420,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .left:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .right {
     background-color: black; 
     color: white;
@@ -479,13 +445,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .right:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .up {
     background-color: black; 
     color: white;
@@ -506,13 +470,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .up:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .down {
     background-color: black; 
     color: white;
@@ -533,13 +495,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .down:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .rotateleft {
     background-color: black; 
     color: white;
@@ -559,15 +519,12 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
     border: 4px;
-
 }
-
 .rotateleft:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .rotateright {
     background-color: black; 
     color: white;
@@ -588,13 +545,11 @@ body {
     cursor: pointer;
     border: 4px;
 }
-
 .rotateright:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
-
 .reset {
     border-width: 4px;
  background-color: black; 
@@ -619,11 +574,10 @@ body {
     margin-left: 0px;
  margin-right: 0px;
 }
-
 .reset:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .active a{
