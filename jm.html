@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>JM Player</title>
+    <title>JM Video Player</title>
     
 <meta  name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -72,7 +72,7 @@ body {
     display: block;
     min-width: 150px;
     left:40%;    
-    top: 11%;
+    top: 10%;
 }
 
 .timer:hover {
@@ -85,23 +85,23 @@ body {
 .timerbar {
     position: absolute;
     display: block;
-    min-width:90%;
-    left:3.5%;
-    right: 3%;
+    left:6.5%;
+    right: 5.5%;
     top: 3.5%;
-    height: 32px;
-    width:93.5%;
+    height: 37px;
+    width:88%;
+    opacity: .25;
+    transition: opacity 10s;
     background-color: transparent;
-    border: 3px transparent;
-    border-radius: 10px;
-    border-style: double;
+    border: 2px;
+    border-color: transparent;
+    border-radius: 8px;
+    border-style: solid;
 }
 
 .timerbar:hover {
-    background-color: #C0C0C0;
-    border: 3px lime;
-    border-radius: 10px;
-    border-style: double;
+    background-color: #a8a9ad;
+    border-color: white;
     opacity: 1;
     transition: opacity 2s;
 }
@@ -135,12 +135,15 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 13px;
+    
     line-height:2px;
     margin: 0px 0px;
+    margin-top: 4px;
     padding-top:1px;
     padding-bottom:1px;
     padding-left:3px;
-    width: 65px; 
+    padding-right:3px;
+    width: 62px; 
     height: 30px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -150,9 +153,10 @@ body {
 
 
 .timerbutton1 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color: red;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
@@ -164,9 +168,10 @@ body {
 }
 
 .timerbutton2 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color: blue;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
@@ -178,9 +183,10 @@ body {
 }
 
 .timerbutton3 {
-    background-color: black; 
-    color: white;
-    border-color:  fuchsia;
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
     width: 75px; height: 30px;
@@ -193,9 +199,10 @@ body {
 }
 
 .timerbutton4 {
-    background-color: black; 
+    background-color: transparent;
+    font-weight: normal;
     color: white; 
-    border-color:  aqua;
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
@@ -207,9 +214,10 @@ body {
 }
 
 .timerbutton5 {
-    background-color: black; 
-    color: white;
-    border-color: gold;
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
     border-radius: 10px;
     border-style:double;
 }
@@ -226,7 +234,8 @@ body {
     border-color: lime;
     border-radius: 10px;
     border-style:double;
-    width: 40x
+    width: 40x;
+    Margin: auto;
 }
 
 .timerbutton6:hover {
@@ -241,10 +250,10 @@ body {
   position:relative;
   overflow:hidden;
   margin:0;
-  border: 5px;
-  border-color:lime;
-  border-style:double;
-  border-radius: 10px;
+  border: 4px;
+  border-color:#0066CD;
+  border-style:solid;
+  border-radius: 10x;
 }
 
 #stage span{font-size:20px;color:#666;display:block;padding:2em;}
@@ -252,10 +261,10 @@ body {
 #video{
   position: relative;
   
-  border: 5px;
+  border: 4px;
   border-color:gold;
-  border-style:double;
-  border-radius: 10px;
+  border-style:solid;
+  border-radius: 4px;
   width: 99.25%;
   height: auto;
   padding-bottom: 0px;
@@ -372,7 +381,7 @@ body {
 .zoomin:hover {
     border-color: gold;
     background-color:  lime; 
-    color: white
+    color: black
 }
 
 .zoomout {
@@ -400,7 +409,7 @@ body {
 .zoomout:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .play {
@@ -429,7 +438,7 @@ body {
 .play:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .left {
@@ -456,7 +465,7 @@ body {
 .left:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .right {
@@ -483,7 +492,7 @@ body {
 .right:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .up {
@@ -510,7 +519,7 @@ body {
 .up:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .down {
@@ -537,7 +546,7 @@ body {
 .down:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .rotateleft {
@@ -565,7 +574,7 @@ body {
 .rotateleft:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .rotateright {
@@ -592,7 +601,7 @@ body {
 .rotateright:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .reset {
@@ -623,7 +632,7 @@ body {
 .reset:hover {
     border-color: gold;
     background-color: lime; 
-    color: white
+    color: black
 }
 
 .active a{
