@@ -51,7 +51,7 @@ body {
 .timer {
     position:absolute;
     border:3px #666666 solid;
-    border-radius: 12px;
+    border-radius: 20px;
     background-color: black;
     line-height:30px;
     font-size:25px;
@@ -66,7 +66,7 @@ body {
     display: block;
     min-width: 150px;
     left:75%;    
-    top: 10%;
+    top: 11%;
 }
 .timer:hover {
     border:3px red solid;
@@ -191,19 +191,22 @@ body {
     background-color: #e7e7e7; 
     color: gray
 }
-.timerbutton5 {
+
+#timerbutton5 {
     background-color: transparent;
     font-weight: normal;
     color: white; 
     border-color: transparent;
     border-radius: 10px;
     border-style:double;
+    width: 130px;
 }
-.timerbutton5:hover {
+#timerbutton5:hover {
     border-color: lime;
     background-color: blue; 
     color: white;
 }
+
 .timerbutton6 {
     background-color: black; 
     color: white;
@@ -642,9 +645,9 @@ ul{list-style-type: disc; color:red
 
          <div class="timerbar" style="text-align:center">
            <span class="closebtn2">&times;</span>
-            <button class="timerbutton timerbutton5" onClick="multiReset()">Reset</button> 
-            <button class="timerbutton timerbutton2" onClick="multiStart()">Start</button>
-            <button class="timerbutton timerbutton1" onclick="on1X()">Stop/1X</button>
+            <button class="timerbutton timerbutton2" onClick="multiReset()">Reset</button> 
+            <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause</button>
+            <!--<button class="timerbutton timerbutton1" onclick="on1X()">Stop/1X</button>  -->
             <button class="timerbutton timerbutton2" onClick="multiSlow()">+1/8X</button>
             <button class="timerbutton timerbutton2" onClick="multiSuperSlow()">+1/16X</button> 
             <button class="timerbutton timerbutton1" id="negative2">-1/8X</button>
@@ -652,7 +655,7 @@ ul{list-style-type: disc; color:red
             <button class="timerbutton timerbutton4" onClick="multiFwd()">+4X</button>
             <button class="timerbutton timerbutton4" onClick="multiSupFwd()">+16X</button>                       
             <button class="timerbutton timerbutton1" id="negative3">-4X</button>
-            <button class="timerbutton timerbutton5" onclick="on0()">Repeat</button> 
+            <button class="timerbutton timerbutton2" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
             <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/ecv.html");return true;'>[\+/]</button>
@@ -692,7 +695,7 @@ ul{list-style-type: disc; color:red
             <right>
  <!--               <a onClick="on0()">Women Slalom Finals Worlds 2019</a>
                <a onClick="on1()">Men Slalom Finals Worlds 2019</a>
-               <button class="timerbutton timerbutton5" onclick="on1()">Men Slalom Finals Worlds 2019</button> -->
+<!--               <button class="timerbutton timerbutton5" onclick="on1()">Men Slalom Finals Worlds 2019</button> -->
                <button class="playlistbutton "onclick="on0()"><li>Clip 1</li></button>
                <button class="playlistbutton" onclick="on1()"><li>Clip 2</li></button>
                <button class="playlistbutton "onclick="on2()"><li>Clip 3</li></button>
@@ -801,12 +804,17 @@ for (i = 0; i < close.length; i++) {
 /* Check the class name of the button and act accordingly */    
       switch(t.className){
 /* Toggle play functionality and button label */    
-        case 'play':
+         case 'play':
           if(v.paused){
-            v.play();
+            timer.start(10);
+            timer.mode(1);
+            video_player.play();
+            video.playbackRate = 1.0;
             t.innerHTML = 'Pause';
           } else {
-            v.pause();
+            clearInterval(intervalRewind);
+            timer.stop();
+            video_player.pause();
             t.innerHTML = 'Play';
           }
         break;
@@ -914,13 +922,54 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     timer.stop();
     video_player.pause();
    }
+   
   function multiStart() {
-    timer.start(10);
-    timer.mode(1);
-    video_player.play();
-    video.playbackRate = 1.0; 
-   }
-     
+      var btn = document.getElementById("timerbutton5");
+        if (btn.value == "Play") {
+             btn.value = "Pause";
+             btn.innerHTML = "Play";
+             video_player.play();
+                }
+         else {
+             btn.value = "Play";
+             btn.innerHTML = "Pause";
+             video_player.pause();
+                }
+     if(video_player.paused){
+      timer.start(10);
+      timer.mode(1);
+      video_player.play();
+      video.playbackRate = 1.0;
+      } 
+       else {
+         clearInterval(intervalRewind);
+            timer.stop();
+            video_player.pause();
+         }
+ }
+
+/*
+function myFunction() {
+
+                var btn = document.getElementById("myButton");
+
+                if (btn.value == "Open Curtain") {
+                    btn.value = "Close Curtain";
+                    btn.innerHTML = "Close Curtain";
+                }
+                else {
+                    btn.value = "Open Curtain";
+                    btn.innerHTML = "Open Curtain";
+                }
+
+            }
+           
+and edit the button
+
+<button onclick="myFunction()" id="myButton" value="Open Curtain">Open Curtain</button>
+
+*/
+
   function multiReset() {
     timer.reset(0000)
    }
@@ -958,7 +1007,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     timer.mode(0);    
    }
    
-   
+  
         var video_directory = ['https://player.vimeo.com/external/379450438.hd.mp4?s=6d141931937958de8a96fc7988df040dd2a098a3&profile_id=174',
                                'https://player.vimeo.com/external/379451949.hd.mp4?s=81c734c30b1f067f5b632b844bc75b67943cfa6c&profile_id=174',
                                'https://player.vimeo.com/external/379442921.hd.mp4?s=ce5ee7194d274a481b426decf72f6d5ef79e3f38&profile_id=174',
@@ -967,6 +1016,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
                                'https://player.vimeo.com/external/379450282.hd.mp4?s=ef4e87bcabab594deefec8534926cd0c4b659863&profile_id=174',
                                'https://player.vimeo.com/external/379444537.hd.mp4?s=b5a38168f6fce4b8e8c239903301ce9616ba2509&profile_id=174',
                                ]; 
+
  
   
         var video_index = 0;
@@ -1321,3 +1371,4 @@ $(document).ready(function(e)
 </script>
 
 </body>
+
