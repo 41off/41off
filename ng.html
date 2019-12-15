@@ -925,15 +925,17 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
    
   function multiStart() {
       var btn = document.getElementById("timerbutton5");
-      if (btn.value == "Play") {
+        if (btn.value == "Play") {
              btn.value = "Pause";
-             btn.innerHTML = "Pause";
+             btn.innerHTML = "Play";
+             video_player.play();
                 }
          else {
              btn.value = "Play";
-             btn.innerHTML = "Play";
+             btn.innerHTML = "Pause";
+             video_player.pause();
                 }
-      if(video_player.paused){
+     if(video_player.paused){
       timer.start(10);
       timer.mode(1);
       video_player.play();
