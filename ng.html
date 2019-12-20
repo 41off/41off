@@ -898,8 +898,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
              btn.value = "Play";
              btn.innerHTML = "Pause";
              video_player.pause();
-             
-                }
+              }
+              
      if(video_player.paused){
       alert('Use this button before and after each click on rewind buttons ("-1/8X or -1X"). If video gets stuck; hit browser refresh button');
       timer.start(10);
@@ -910,6 +910,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
        else {
             timer.stop();
             video_player.pause();
+            clearInterval(rewind);
          }
  }
 
