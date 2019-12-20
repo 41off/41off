@@ -123,7 +123,8 @@ body {
     background-color: #ff0000;
     color: white;
 }
-.timerbutton2 {
+
+#negative2 {
     background-color: transparent;
     font-weight: normal;
     color: white; 
@@ -131,11 +132,54 @@ body {
     border-radius: 10px;
     border-style:double;
 }
-.timerbutton2:hover {
+#negative2:hover {
+    border-color: lime;
+    background-color: #ff0000;
+    color: white;
+}
+
+#timerbutt1_8 {
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
+    border-radius: 10px;
+    border-style:double;
+}
+#timerbutt1_8:hover {
     border-color: lime;
     background-color: #008CBA;
     color: white;
 }
+
+#timerbutt1_16 {
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
+    border-radius: 10px;
+    border-style:double;
+}
+#timerbutt1_16:hover {
+    border-color: lime;
+    background-color: #008CBA;
+    color: white;
+}
+
+#timerbuttonreset {
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
+    border-radius: 10px;
+    border-style:double;
+}
+#timerbuttonreset:hover {
+    border-color: lime;
+    background-color: #008CBA;
+    color: white;
+}
+
 .timerbutton3 {
     background-color: transparent;
     font-weight: normal;
@@ -159,6 +203,35 @@ body {
     border-style:double;
 }
 .timerbutton4:hover {
+    border-color: lime;
+    background-color: #e7e7e7; 
+    color: gray
+}
+
+#speed4x {
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
+    border-radius: 10px;
+    border-style:double;
+}
+#speed4x:hover {
+    border-color: lime;
+    background-color: #e7e7e7; 
+    color: gray
+}
+
+#speed16x {
+    background-color: transparent;
+    font-weight: normal;
+    color: white; 
+    border-color: transparent;
+    border-radius: 10px;
+    border-style:double;
+}
+
+#speed16x:hover {
     border-color: lime;
     background-color: #e7e7e7; 
     color: gray
@@ -586,16 +659,16 @@ ul{list-style-type: disc; color:red
 
          <div class="timerbar" style="text-align:center">
            <span class="closebtn2">&times;</span>
-            <button class="timerbutton timerbutton2" onClick="multiReset()">Reset</button> 
+            <button class="timerbutton" id="timerbuttonreset" onClick="multiReset()">Reset</button> 
             <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause</button>
-            <button class="timerbutton timerbutton2" onClick="multiSlow()">+1/8X</button>
-            <button class="timerbutton timerbutton2" onClick="multiSuperSlow()">+1/16X</button> 
-            <button class="timerbutton timerbutton1" id="negative2">-1/8X</button>
-            <button class="timerbutton timerbutton1" id="negative">-1X</button> 
-            <button class="timerbutton timerbutton4" onClick="multiFwd()">+4X</button>
-            <button class="timerbutton timerbutton4" onClick="multiSupFwd()">+16X</button>                       
+            <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X</button>
+            <button class="timerbutton" id="timerbutt1_16" onClick="multiSuperSlow()" value="+1/16x">+1/16X</button> 
+            <button class="timerbutton" id="negative2" value="-1/8X">-1/8X</button>
+            <button class="timerbutton timerbutton1" id="negative" value="-1X">-1X</button> 
+            <button class="timerbutton" id="speed4x" onClick="multiFwd()" value="4X">+4X</button>
+            <button class="timerbutton" id="speed16x" onClick="multiSupFwd()" value="16X">+16X</button>                       
             <button class="timerbutton timerbutton1" id="negative3">-4X</button>
-            <button class="timerbutton timerbutton2" onclick="on0()">Repeat</button> 
+            <button class="timerbutton" id="timerbuttonreset" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
             <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/ecv.html");return true;'>[\+/]</button>
@@ -774,7 +847,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     timer.stop();
     video_player.pause();
     video.pause();
-    clearInterval(intervalRewind);
+    clearInterval(rewind);
     video.playbackRate = 1.0;
    }
  
@@ -783,7 +856,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     video_player.play();
    }
    
-    function onSupFwd(){
+  function onSupFwd(){
     video.playbackRate = 16.0;
     video_player.play();
    }
@@ -799,31 +872,42 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
    }
    
   function multiStop() {
-    clearInterval(intervalRewind);
     timer.stop();
+    timer.reset(0000);
     video_player.pause();
+    clearInterval(rewind);
    }
-   
+ 
+ 
   function multiStart() {
       var btn = document.getElementById("timerbutton5");
+      
+   /*   var w = window.open('','','width=300,height=30')
+      
+      setTimeout(function() {w.close();}, 5000)
+    */   
         if (btn.value == "Play") {
+            /*w.document.write('Use this button before each click on rewind buttons ("-1/8X or -1X")');
+              w.focus();  */
              btn.value = "Pause";
              btn.innerHTML = "Play";
              video_player.play();
+             
                 }
          else {
              btn.value = "Play";
              btn.innerHTML = "Pause";
              video_player.pause();
+             
                 }
      if(video_player.paused){
+      alert('Use this button before and after each click on rewind buttons ("-1/8X or -1X"). If video gets stuck; hit browser refresh button');
       timer.start(10);
-      timer.mode(1);
+      timer.mode(1);      
       video_player.play();
       video.playbackRate = 1.0;
-      } 
+     } 
        else {
-         clearInterval(intervalRewind);
             timer.stop();
             video_player.pause();
          }
@@ -834,17 +918,54 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
    }
    
    function multiFwd() {
-    timer.start(2.5);
-    timer.mode(1);
-    onFastFwd();
-   }
+    var btn = document.getElementById("speed4x");
+        if (btn.value == "+4X") {
+             btn.value = "Pause";
+             btn.innerHTML = "+4X";
+             video_player.play();
+                }
+         else {
+             btn.value = "+4X";
+             btn.innerHTML = "Pause";
+             video_player.pause();
+                }
+     if(video_player.paused){
+      timer.start(2.5);
+      timer.mode(1);
+      video_player.play();
+      video.playbackRate = 4.0;
+      } 
+       else {
+            timer.stop();
+            video_player.pause();
+         }   
+  }
    
    function multiSupFwd() {
-    timer.start(0.625);
-    timer.mode(1);
-    onSupFwd();
+    var btn = document.getElementById("speed16x");
+        if (btn.value == "+16X") {
+             btn.value = "Pause";
+             btn.innerHTML = "+16X";
+             video_player.play();
+                }
+         else {
+             btn.value = "+16X";
+             btn.innerHTML = "Pause";
+             video_player.pause();
+                }
+     if(video_player.paused){
+      timer.start(0.625);
+      timer.mode(1);
+      video_player.play();
+      video.playbackRate = 16.0;
+      } 
+       else {
+            timer.stop();
+            video_player.pause();
+         }   
    }
-   
+
+/*   
     function multiSlow() {
     timer.start(80);
     timer.mode(1);
@@ -852,7 +973,57 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     clearInterval(intervalRewind);
     onSlow();
    }
-   
+*/
+  
+   function multiSlow() {
+      var btn = document.getElementById("timerbutt1_8");
+        if (btn.value == "+1/8X") {
+             btn.value = "Pause";
+             btn.innerHTML = "+1/8X";
+             video_player.play();
+                }
+         else {
+             btn.value = "+1/8X";
+             btn.innerHTML = "Pause";
+             video_player.pause();
+                }
+     if(video_player.paused){
+      timer.start(80);
+      timer.mode(1);
+      video_player.play();
+      video.playbackRate = .125;
+      } 
+       else {
+            timer.stop();
+            video_player.pause();
+         }
+ }
+
+   function multiSuperSlow() {
+      var btn = document.getElementById("timerbutt1_16");
+        if (btn.value == "+1/16X") {
+             btn.value = "Pause";
+             btn.innerHTML = "+1/16X";
+             video_player.play();
+                }
+         else {
+             btn.value = "+1/16X";
+             btn.innerHTML = "Pause";
+             video_player.pause();
+                }
+     if(video_player.paused){
+      timer.start(160);
+      timer.mode(1);
+      video_player.play();
+      video.playbackRate = .0625;
+      } 
+       else {
+            timer.stop();
+            video_player.pause();
+         }
+ }
+
+/*   
     function multiSuperSlow() {
     timer.start(160);
     timer.mode(1);
@@ -860,8 +1031,9 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     clearInterval(intervalRewind);
     onSuperSlow();
    }
-   
-    function multiRev() {
+*/
+  
+   function multiRev() {
     timer.start(80);
     timer.mode(0);    
    }
@@ -880,11 +1052,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         var video_index = 0;
         var video_player = null;
         var video = document.getElementById('video');  
-        var intervalRewind;
-        var seekBar = document.getElementById("seek-bar");
-        var volumeBar = document.getElementById("volume-bar");
-           
-                       
+       
+                          
       function onload(){
             console.log("body loaded");
             video_player = document.getElementById("video");
@@ -894,7 +1063,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.currentSrc();
             video_player.currentTime();
         }
-        function onVideoEnded(){
+        
+       function onVideoEnded(){
             console.log("video ended");
             if(video_index < video_directory.length - 1){
                 video_index++;
@@ -906,7 +1076,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.play();
         }
         
-        function onVideoNext(){
+       function onVideoNext(){
             console.log("video next");
             if(video_index < video_directory.length - 1){
                 video_index++;
@@ -919,7 +1089,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.play();
         }
         
-        function onVideoBack(){
+       function onVideoBack(){
             console.log("video back");
             if(video_index < video_directory.length - 1){
                 video_index--;
@@ -932,34 +1102,94 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.play();
         }
         
-   //rewind below    
-     
-   $("#negative").click(function(){ // button function for rewind
+   //rewind below  
+   
+/*
+  $("#negative").click(function() { // button function for rewind
        intervalRewind = setInterval(function(){
        timer.start(10);
        timer.mode(0);
        video.playbackRate = 1.0;
        if(video.currentTime == 0){
-           clearInterval(intervalRewind);
-       }
+          clearInterval(intervalRewind);
+         }
        else{
            video.currentTime += -.01;
-       }
+            }
                 },30);
 });
-  $("#negative2").click(function() { // button function for rewind
-       intervalRewind = setInterval(function(){
-       timer.start(80);
-       timer.mode(0);
-       video.playbackRate = .125;
-       if(video.currentTime == 0){
-          clearInterval(intervalRewind);
-       }
+*/
+
+$("#negative").click(function() { // button function for rewind
+      
+        rewind = setInterval(function() {
+               
+       if (video_player.currentTime == 0) {
+          clearInterval(rewind);
+          video_player.pause();
+          }
+          
        else{
-           video.currentTime += -.01;
-       }
-                },90);
+           timer.start(10);
+           timer.mode(0);
+           video_player.currentTime += -.10;
+             }
+                },120);
+        
+      setTimeout(function() {
+        alert('20 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart. If video stick; refresh webpage to reset.');
+        clearInterval(rewind);
+        timer.stop();
+        }, 20000);
 });
+
+$("#negative2").click(function() { // button function for rewind
+      
+        rewind = setInterval(function() {
+               
+       if (video_player.currentTime == 0) {
+          clearInterval(rewind);
+          video_player.pause();
+          }
+          
+       else{
+           timer.start(80);
+           timer.mode(0);
+           video_player.currentTime += -.03;
+             }
+                },240);
+        
+      setTimeout(function() {
+        alert('20 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart');
+        clearInterval(rewind);
+        timer.stop();
+        }, 20000);
+});
+
+$("#negative3").click(function() { // button function for rewind
+      
+        rewind = setInterval(function() {
+               
+       if (video_player.currentTime == 0) {
+          clearInterval(rewind);
+          video_player.pause();
+          }
+          
+       else{
+           timer.start(2.5);
+           timer.mode(0);
+           video_player.currentTime += -.20;
+             }
+                },60);
+        
+      setTimeout(function() {
+        alert('10 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart');
+        clearInterval(rewind);
+        timer.stop();
+        }, 10000);
+});
+
+/*  
 $("#negative3").click(function() { // button function for rewind
        intervalRewind = setInterval(function(){
        timer.start(2.5);
@@ -969,12 +1199,13 @@ $("#negative3").click(function() { // button function for rewind
           clearInterval(intervalRewind);
        }
        else{
-           video.currentTime += -.01;
+           video.currentTime += -.0083;
        }
                 },10);
 });
+*/
             
-          function on0(){
+       function on0(){
             console.log("0 start");
             video_index = 0;
             video_player = document.getElementById("video");
@@ -1199,5 +1430,5 @@ $(document).ready(function(e)
 });
 </script>
 
-    </body>
+</body>
 
