@@ -1188,16 +1188,17 @@ $("#negative2").click(function() { // button function for rewind
 
 $("#negative3").click(function() { // button function for rewind
     video_player.pause();
-    
-   rewind = setInterval(function() {
+    timer.start(2.5);
+    timer.mode(0);
+  
+    rewind = setInterval(function() {
                
        if (video_player.currentTime == 0) {
           clearInterval(rewind);
           video_player.pause();
           }
        else{
-           timer.start(2.5);
-           timer.mode(0);
+           
            video_player.currentTime += -1;
              }
                 },250);
