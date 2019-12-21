@@ -1177,14 +1177,14 @@ $("#negative2").click(function() { // button function for rewind
            timer.mode(0);
            video_player.currentTime += -.05;
              }
-                },400);
+                },410);
            
          
      setTimeout(function() {
                alert('2.5 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
                clearInterval(rewind);
                timer.stop();
-               }, 20060);
+               }, 20000);
 });
 
 $("#negative3").click(function() { // button function for rewind
