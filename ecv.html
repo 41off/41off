@@ -124,6 +124,35 @@ body {
     color: white;
 }
 
+
+
+.timerbutton1 .tb1text {
+  visibility: hidden;
+  width: 180px;
+  height:85px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border: 2px;
+  border-color:silver;
+  border-radius: 6px;
+  display:block;
+  line-height: 125%;
+  left: 60%;
+  top: 110%;
+  
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+ 
+}
+
+.timerbutton1:hover .tb1text {
+  visibility: visible;
+}
+
+
 #negative2 {
     background-color: transparent;
     font-weight: normal;
@@ -663,11 +692,11 @@ ul{list-style-type: disc; color:red
             <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause</button>
             <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X</button>
             <button class="timerbutton" id="timerbutt1_16" onClick="multiSuperSlow()" value="+1/16x">+1/16X</button> 
-            <button class="timerbutton" id="negative2" value="-1/8X">-1/8X</button>
-            <button class="timerbutton timerbutton1" id="negative" value="-1X">-1X</button> 
+            <button class="timerbutton timerbutton1" id="negative2">-1/8X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button>
+            <button class="timerbutton timerbutton1" id="negative" value="-1X">-1X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button > 
             <button class="timerbutton" id="speed4x" onClick="multiFwd()" value="4X">+4X</button>
             <button class="timerbutton" id="speed16x" onClick="multiSupFwd()" value="16X">+16X</button>                       
-            <button class="timerbutton timerbutton1" id="negative3">-4X</button>
+            <button class="timerbutton timerbutton1" id="negative3">-4X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button>
             <button class="timerbutton" id="timerbuttonreset" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
@@ -1107,7 +1136,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 
 $("#negative").click(function() { // button function for rewind
     video_player.pause();
-    alert('20 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+     
      rewind = setInterval(function() {
                
        if (video_player.currentTime == 0) {
@@ -1123,7 +1152,7 @@ $("#negative").click(function() { // button function for rewind
                 },133.3);
         
       setTimeout(function() {
-        alert('20 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart. If video stick; refresh webpage to reset.');
+        alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
         clearInterval(rewind);
         timer.stop();
         }, 20000);
@@ -1131,7 +1160,7 @@ $("#negative").click(function() { // button function for rewind
 
 $("#negative2").click(function() { // button function for rewind
     video_player.pause();
-    alert('20 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+      
      rewind = setInterval(function() {
               
        if (video_player.currentTime == 0) {
@@ -1151,7 +1180,7 @@ $("#negative2").click(function() { // button function for rewind
            
          
      setTimeout(function() {
-               alert('20 second rewind loop DONE!. Click blue "Play/Pause" button to left, after "OK", to restart');
+               alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
                clearInterval(rewind);
                timer.stop();
                }, 20000);
@@ -1159,7 +1188,7 @@ $("#negative2").click(function() { // button function for rewind
 
 $("#negative3").click(function() { // button function for rewind
     video_player.pause();
-    alert('10 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+    
    rewind = setInterval(function() {
                
        if (video_player.currentTime == 0) {
@@ -1174,7 +1203,7 @@ $("#negative3").click(function() { // button function for rewind
                 },133.3);
         
       setTimeout(function() {
-        alert('10 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart');
+        alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
         clearInterval(rewind);
         timer.stop();
         }, 10000);
