@@ -20,7 +20,6 @@ body {
     -khtml-background-size: 100%;
     color: white
 }
-
 .timer {
     position:absolute;
     border:3px #666666 solid;
@@ -123,9 +122,6 @@ body {
     background-color: #ff0000;
     color: white;
 }
-
-
-
 .timerbutton1 .tb1text {
   visibility: hidden;
   width: 180px;
@@ -147,12 +143,9 @@ body {
   z-index: 1;
  
 }
-
 .timerbutton1:hover .tb1text {
   visibility: visible;
 }
-
-
 #negative2 {
     background-color: transparent;
     font-weight: normal;
@@ -166,7 +159,6 @@ body {
     background-color: #ff0000;
     color: white;
 }
-
 #timerbutt1_8 {
     background-color: transparent;
     font-weight: normal;
@@ -180,7 +172,6 @@ body {
     background-color: #008CBA;
     color: white;
 }
-
 #timerbutt1_16 {
     background-color: transparent;
     font-weight: normal;
@@ -194,7 +185,6 @@ body {
     background-color: #008CBA;
     color: white;
 }
-
 #timerbuttonreset {
     background-color: transparent;
     font-weight: normal;
@@ -208,7 +198,6 @@ body {
     background-color: #008CBA;
     color: white;
 }
-
 .timerbutton3 {
     background-color: transparent;
     font-weight: normal;
@@ -236,7 +225,6 @@ body {
     background-color: #e7e7e7; 
     color: gray
 }
-
 #speed4x {
     background-color: transparent;
     font-weight: normal;
@@ -250,7 +238,6 @@ body {
     background-color: #e7e7e7; 
     color: gray
 }
-
 #speed16x {
     background-color: transparent;
     font-weight: normal;
@@ -259,13 +246,11 @@ body {
     border-radius: 10px;
     border-style:double;
 }
-
 #speed16x:hover {
     border-color: lime;
     background-color: #e7e7e7; 
     color: gray
 }
-
 #timerbutton5 {
     background-color: transparent;
     font-weight: normal;
@@ -282,7 +267,6 @@ body {
     color: white;
     
 }
-
 .timerbutton6 {
     background-color: black; 
     color: white;
@@ -310,7 +294,6 @@ body {
   border-radius: 10x;
 }
 #stage span{font-size:20px;color:#666;display:block;padding:2em;}
-
 #video{
   position: relative;
   
@@ -354,7 +337,6 @@ body {
  color: black;
  transition: opacity 2s;
 }
-
 .playlist {
     display:inline-block;
     position:absolute;
@@ -386,7 +368,6 @@ body {
    text-decoration:underline;
    transition: opacity 2s;
 }
-
 .playlistbutton {
     text-align: left;
     background-color: transparent;
@@ -406,7 +387,6 @@ body {
     color:blue;
     text-decoration:underline 
 }
-
 .zoomin {
     background-color: black; 
     color: white;
@@ -432,7 +412,6 @@ body {
     background-color:  lime; 
     color: black
 }
-
 .zoomout {
     background-color: black; 
     color: white;
@@ -458,7 +437,6 @@ body {
     background-color: lime; 
     color: black
 }
-
 .left {
     background-color: black; 
     color: white;
@@ -656,7 +634,6 @@ body {
 .closebtn2:hover {
     color: yellow;
 }
-
 ul li{float: left;
       width: 100%;  /*helps to determine number of columns, for instance 33.3% displays 3 columns*/
 }
@@ -743,7 +720,6 @@ for (i = 0; i < close.length; i++) {
 </script>
 
 <script>
-
 (function(){
 /* predefine zoom and rotate */
   var zoom = 1,
@@ -942,7 +918,6 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             clearInterval(rewind);
          }
  }
-
   function multiReset() {
     timer.reset(0000)
    }
@@ -994,7 +969,6 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.pause();
          }   
    }
-
 /*   
     function multiSlow() {
     timer.start(80);
@@ -1028,7 +1002,6 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.pause();
          }
  }
-
    function multiSuperSlow() {
       var btn = document.getElementById("timerbutt1_16");
         if (btn.value == "+1/16X") {
@@ -1052,7 +1025,6 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             video_player.pause();
          }
  }
-
 /*   
     function multiSuperSlow() {
     timer.start(160);
@@ -1135,7 +1107,6 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         }
         
    //rewind below  
-
 $("#negative").click(function() { // button function for rewind
     video_player.pause();
      
@@ -1159,7 +1130,6 @@ $("#negative").click(function() { // button function for rewind
         timer.stop();
         }, 20000);
 });
-
 $("#negative2").click(function() { // button function for rewind
     video_player.pause();
       
@@ -1177,16 +1147,15 @@ $("#negative2").click(function() { // button function for rewind
            timer.mode(0);
            video_player.currentTime += -.05;
              }
-                },300);
+                },400);
            
          
      setTimeout(function() {
                alert('2.5 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
                clearInterval(rewind);
                timer.stop();
-               }, 20000);
+               }, 20500);
 });
-
 $("#negative3").click(function() { // button function for rewind
     video_player.pause();
       
@@ -1209,7 +1178,6 @@ $("#negative3").click(function() { // button function for rewind
         timer.stop();
         }, 8000);
 });
-
 /*  
 $("#negative3").click(function() { // button function for rewind
        intervalRewind = setInterval(function(){
