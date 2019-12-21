@@ -960,7 +960,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
              video_player.pause();
                 }
      if(video_player.paused){
-      timer.start(2.5);
+      timer.start(2);
       timer.mode(1);
       video_player.play();
       video.playbackRate = 4.0;
@@ -984,7 +984,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
              video_player.pause();
                 }
      if(video_player.paused){
-      timer.start(1);
+      timer.start(0.3125);
       timer.mode(1);
       video_player.play();
       video.playbackRate = 16.0;
