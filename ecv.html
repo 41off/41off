@@ -1180,7 +1180,7 @@ $("#negative2").click(function() { // button function for rewind
            
          
      setTimeout(function() {
-               alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
+               alert('2.5 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
                clearInterval(rewind);
                timer.stop();
                }, 20000);
@@ -1196,7 +1196,7 @@ $("#negative3").click(function() { // button function for rewind
           video_player.pause();
           }
        else{
-           timer.start(10);
+           timer.start(2.5);
            timer.mode(0);
            video_player.currentTime += -1;
              }
@@ -1206,7 +1206,7 @@ $("#negative3").click(function() { // button function for rewind
         alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
         clearInterval(rewind);
         timer.stop();
-        }, 10000);
+        }, 5000);
 });
 
 /*  
