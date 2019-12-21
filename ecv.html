@@ -901,7 +901,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
               }
               
      if(video_player.paused){
-      alert('Use this button before and after each click on rewind buttons ("-1/8X or -1X"). If video gets stuck; hit browser refresh button');
+      
       timer.start(10);
       timer.mode(1);      
       video_player.play();
@@ -1104,26 +1104,11 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         }
         
    //rewind below  
-   
-/*
-  $("#negative").click(function() { // button function for rewind
-       intervalRewind = setInterval(function(){
-       timer.start(10);
-       timer.mode(0);
-       video.playbackRate = 1.0;
-       if(video.currentTime == 0){
-          clearInterval(intervalRewind);
-         }
-       else{
-           video.currentTime += -.01;
-            }
-                },30);
-});
-*/
 
 $("#negative").click(function() { // button function for rewind
-      
-        rewind = setInterval(function() {
+    video_player.pause();
+    alert('20 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+     rewind = setInterval(function() {
                
        if (video_player.currentTime == 0) {
           clearInterval(rewind);
@@ -1133,9 +1118,9 @@ $("#negative").click(function() { // button function for rewind
        else{
            timer.start(10);
            timer.mode(0);
-           video_player.currentTime += -.10;
+           video_player.currentTime += -.1333;
              }
-                },120);
+                },133.3);
         
       setTimeout(function() {
         alert('20 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart. If video stick; refresh webpage to reset.');
@@ -1145,43 +1130,48 @@ $("#negative").click(function() { // button function for rewind
 });
 
 $("#negative2").click(function() { // button function for rewind
-      
-        rewind = setInterval(function() {
-               
+    video_player.pause();
+    alert('20 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+     rewind = setInterval(function() {
+              
        if (video_player.currentTime == 0) {
           clearInterval(rewind);
           video_player.pause();
+          
+          
           }
           
        else{
+           
            timer.start(80);
            timer.mode(0);
-           video_player.currentTime += -.03;
+           video_player.currentTime += -.0167;
              }
-                },240);
-        
-      setTimeout(function() {
-        alert('20 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart');
-        clearInterval(rewind);
-        timer.stop();
-        }, 20000);
+                },133.3);
+           
+         
+     setTimeout(function() {
+               alert('20 second rewind loop DONE!. Click blue "Play/Pause" button to left, after "OK", to restart');
+               clearInterval(rewind);
+               timer.stop();
+               }, 20000);
 });
 
 $("#negative3").click(function() { // button function for rewind
-      
-        rewind = setInterval(function() {
+    video_player.pause();
+    alert('10 second rewind loop starting - wait for completion prior to clicking any other buttons.');  
+   rewind = setInterval(function() {
                
        if (video_player.currentTime == 0) {
           clearInterval(rewind);
           video_player.pause();
           }
-          
        else{
-           timer.start(2.5);
+           timer.start(10);
            timer.mode(0);
-           video_player.currentTime += -.20;
+           video_player.currentTime += -.5332;
              }
-                },60);
+                },133.3);
         
       setTimeout(function() {
         alert('10 second rewind loop complete. Click blue "Play/Pause" button to left, after "OK", to restart');
