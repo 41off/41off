@@ -1198,8 +1198,8 @@ $("#negative3").click(function() { // button function for rewind
           video_player.pause();
           }
        else{
+           timer.start(1);
            timer.mode(0);
-           timer.start(2.5);
            video_player.currentTime += -1;
              }
                 },250);
