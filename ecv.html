@@ -1174,7 +1174,6 @@ $("#negative2").click(function() { // button function for rewind
           }
           
        else{
-           
            timer.start(80);
            timer.mode(0);
            video_player.currentTime += -.05;
@@ -1199,12 +1198,12 @@ $("#negative3").click(function() { // button function for rewind
           video_player.pause();
           }
        else{
+           timer.mode(0);
+           timer.start(2.5);
            video_player.currentTime += -1;
              }
                 },250);
-           timer.start(1.25);
-           timer.mode(0);
-        
+           
       setTimeout(function() {
         alert('20 second rewind loop DONE!. Click desired player button to resume, after "OK", to restart');
         clearInterval(rewind);
