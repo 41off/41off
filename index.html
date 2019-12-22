@@ -124,12 +124,12 @@ body {
 }
 .timerbutton1 .tb1text {
   visibility: hidden;
-  width: 200px;
-  height:100px;
+  width: 180px;
+  height:85px;
   background-color: black;
   color: #fff;
   text-decoration:blink;
-  font-weight:bold;
+  font-weight:normal;
   text-align: center;
   border-width:2px;
   border-style:inset;
@@ -137,7 +137,7 @@ body {
   border-radius: 6px;
   display:block;
   line-height: 125%;
-  left: 55%;
+  left: 60%;
   top: 110%;
   /* Position the tooltip */
   position: absolute;
@@ -192,12 +192,12 @@ body {
   width: 180px;
   height:50px;
   background-color: black;
-  border-color: white;
+  border-color: silver;
   color: white;
   text-decoration:blink;
-  font-weight:bold;
+  font-weight:normal;
   text-align: center;
-  margin-left:0px;
+  margin-left:5px;
   display: inline-flex;
   align-items: center;
   border-width:2px;
@@ -419,11 +419,39 @@ body {
     color:blue;
     text-decoration:underline 
 }
-    
+
 .playlistbutton:focus {
   color: red;
   font-weight:bold;
   text-decoration:underline;
+}
+
+.playlistbutton .plbtext {
+  visibility: hidden;
+  width: 180px;
+  height:50px;
+  background-color: black;
+  border-color: silver;
+  color: white;
+  text-decoration:blink;
+  font-weight:bold;
+  text-align: center;
+  margin-left:5px;
+  display: inline-flex;
+  align-items: center;
+  border-width:2px;
+  border-style:inset;
+  border-radius: 6px;
+  line-height: 125%;
+  right: 20%;
+  top: 101%;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+ 
+}
+.playlistbutton:hover .plbtext {
+  visibility: visible;
 }
 
 .zoomin {
@@ -673,17 +701,22 @@ body {
 .closebtn2:hover {
     color: yellow;
 }
+
 ul li{float: left;
       width: 100%;  /*helps to determine number of columns, for instance 33.3% displays 3 columns*/
 }
 ul{list-style-type: disc; color:red
 }
- li a{font-size: 14px; color:#eeeedd; font-weight:bold; background:transparent; padding:2px; display:block; font-family: "Arial Narrow";}
+ li a:link {font-size: 14px; color:#eeeedd; font-weight:bold; background:transparent; padding:2px; display:block; font-family: "Arial Narrow";}
  
- li a:active{color:red; font-family:"Arial Narrow";}
+ li a:active {color:red; font-family:"Arial Narrow";}
  
- li a:hover{color:blue; font-family: "Arial Narrow";
+ li a:hover {color:blue; font-family: "Arial Narrow";
             background:transparent; text-decoration:underline;}
+ 
+ li a:visited {color:green; font-family: "Arial Narrow";
+            background:transparent; text-decoration:underline;}
+            
 </style>
 </head>
 
@@ -706,7 +739,7 @@ ul{list-style-type: disc; color:red
            <span class="closebtn2">&times;</span>
             <button class="timerbutton" id="timerbuttonreset" onClick="multiReset()">Reset</button> 
             <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause<span class="tbtext">This Video Player seems to function better with Chrome browser.</span></button>
-            <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X<span class="tbtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click twice to initiate.</span></button>
+            <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X<span class="tbtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click twice to initiate.</span></button>
             <button class="timerbutton" id="timerbutt1_16" onClick="multiSuperSlow()" value="+1/16x">+1/16X</button> 
             <button class="timerbutton timerbutton1" id="negative2">-1/8X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button>
             <button class="timerbutton timerbutton1" id="negative" value="-1X">-1X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button > 
@@ -716,7 +749,7 @@ ul{list-style-type: disc; color:red
             <button class="timerbutton" id="timerbuttonreset" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
-            <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/");return true;'>[\+/]<span class="tbtext">Click to open full seperate window.</span></button>
+            <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off");return false;'>[\+/]<span class="tbtext">&nbsp;&nbsp;Click to open full seperate window.</span></button>
           </div> 
                
          <div class="timer">
@@ -731,18 +764,20 @@ ul{list-style-type: disc; color:red
       <span class="closebtn2">&times;</span>
           <left>Playlist<br></left><br>
             <right>
-               <button class="playlistbutton "onclick="on0()"><li>Clip 1</li></button>
+               <button class="playlistbutton" onclick="on0()"><li>Clip 1</li></button>
                <button class="playlistbutton" onclick="on1()"><li>Clip 2</li></button>
-               <button class="playlistbutton "onclick="on2()"><li>Clip 3</li></button>
+               <button class="playlistbutton" onclick="on2()"><li>Clip 3</li></button>
                <button class="playlistbutton" onclick="on3()"><li>Clip 4</li></button>
-               <button class="playlistbutton "onclick="on4()"><li>Clip 5</li></button>
+               <button class="playlistbutton" onclick="on4()"><li>Clip 5</li></button>
                <button class="playlistbutton" onclick="on5()"><li>Clip 6</li></button>
-               <button class="playlistbutton "onclick="on6()"><li>Clip 7</li></button>
+               <button class="playlistbutton" onclick="on6()"><li>Clip 7</li></button>
                <button class="playlistbutton" onclick="on7()"><li>Clip 8</li></button>
-               <button class="playlistbutton "onclick="on8()"><li>Clip 9</li></button>
+               <button class="playlistbutton" onclick="on8()"><li>Clip 9</li></button>
                <button class="playlistbutton" onclick="on9()"><li>Clip 10</li></button>
-               <button class="playlistbutton "onclick="on10()"><li>Clip 11</li></button>
+               <button class="playlistbutton" onclick="on10()"><li>Clip 11</li></button>
                <button class="playlistbutton" onclick="on11()"><li>Clip 12</li></button>
+               <button class="playlistbutton" href="#" onclick="parent.location='https://sites.google.com/a/41off.com/rcts/media'"><li>HOME</li><span class="plbtext">Click to open this page in Victory Lake.</span></button>
+
           </right>
        </div>
                
@@ -1082,7 +1117,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
   
         var video_directory = ['https://player.vimeo.com/external/378512202.hd.mp4?s=9e492d9f40f3e3d6292410d2d1146be1fa2cc62d&profile_id=175',
                                'https://player.vimeo.com/external/378656715.hd.mp4?s=a85f1c021b288637fdc116931cf85d911324b3a4&profile_id=175'
-                               ]; 
+                               ];                             
  
   
         var video_index = 0;
