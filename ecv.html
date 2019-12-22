@@ -128,16 +128,17 @@ body {
   height:85px;
   background-color: black;
   color: #fff;
+  text-decoration:blink;
+  font-weight:bold;
   text-align: center;
-  border: 2px;
+  border-width:2px;
+  border-style:inset;
   border-color:silver;
   border-radius: 6px;
   display:block;
   line-height: 125%;
   left: 60%;
   top: 110%;
-  
-  
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -185,6 +186,37 @@ body {
     background-color: #008CBA;
     color: white;
 }
+
+.timerbutton .tbtext {
+  visibility: hidden;
+  width: 180px;
+  height:50px;
+  background-color: #a8a9ad;
+  border-color: white;
+  color: blue;
+  text-decoration:blink;
+  font-weight:bold;
+  text-align: center;
+  margin-left:5px;
+  display: inline-flex;
+  align-items: center;
+  border-width:2px;
+  border-style:inset;
+  border-radius: 6px;
+  line-height: 125%;
+  left: 40%;
+  top: 110%;
+  
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+ 
+}
+.timerbutton:hover .tbtext {
+  visibility: visible;
+}
+
 #timerbuttonreset {
     background-color: transparent;
     font-weight: normal;
@@ -589,7 +621,7 @@ body {
 }
 .reset {
     border-width: 4px;
- background-color: black; 
+    background-color: black; 
     color: white;
     border-color:  inherit;
     border-radius: 10px;
@@ -600,16 +632,16 @@ body {
     line-height:2px;
     margin-top:4px;
     padding-top: 1px;
- padding-bottom: 1px;
- width: 65px;
- height: 30px;
- -webkit-transition-duration: 0.4s;
- transition-duration: 0.4s;
- cursor: pointer;
- margin-bottom: ;
+    padding-bottom: 1px;
+    width: 65px;
+    height: 30px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: ;
 /* Safari */
     margin-left: 0px;
- margin-right: 0px;
+    margin-right: 0px;
 }
 .reset:hover {
     border-color: gold;
@@ -652,8 +684,8 @@ ul{list-style-type: disc; color:red
 
    <div id="stage">
   
-     <video id="video" controls
-                    onclick="this.paused? ClickPause():ClickStart() || timer.stop(0):timer.start(10);" onended="onVideoEnded();">
+     <video id="video" controls 
+                     onclick="this.paused? ClickPause():ClickStart(); this.paused? timer.start(10):timer.stop(0)" onended="onVideoEnded();">
                     <source type="video/mp4">
                     <source type="video/ogg">
                     <source type="video/ts">
@@ -666,8 +698,8 @@ ul{list-style-type: disc; color:red
          <div class="timerbar" style="text-align:center">
            <span class="closebtn2">&times;</span>
             <button class="timerbutton" id="timerbuttonreset" onClick="multiReset()">Reset</button> 
-            <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause</button>
-            <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X</button>
+            <button id="timerbutton5" class="timerbutton" onClick="multiStart()" value="Play">Toggle Play/Pause<span class="tbtext">This Video Player seems to function better with Chrome browser.</span></button>
+            <button class="timerbutton" id="timerbutt1_8" onClick="multiSlow()" value="+1/8X">+1/8X<span class="tbtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click twice to initiate.</span></button>
             <button class="timerbutton" id="timerbutt1_16" onClick="multiSuperSlow()" value="+1/16x">+1/16X</button> 
             <button class="timerbutton timerbutton1" id="negative2">-1/8X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button>
             <button class="timerbutton timerbutton1" id="negative" value="-1X">-1X<span class="tb1text">Click blue "Pause" button to the left first. Click here for 20" rewind loop, wait for completion! Then re-click or choose other player button.</span></button > 
@@ -677,7 +709,7 @@ ul{list-style-type: disc; color:red
             <button class="timerbutton" id="timerbuttonreset" onclick="on0()">Repeat</button> 
             <button class="timerbutton timerbutton3" onClick="onVideoNext()">Next</button>
             <button class="timerbutton timerbutton3" onClick="onVideoBack()">Prior</button>
-            <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/ecv.html");return true;'>[\+/]</button>
+            <button class="timerbutton timerbutton6" href="#" onclick='window.open("https://41off.github.io/41off/ecv.html");return true;'>[\+/]<span class="tbtext">&nbsp;&nbsp;Click to open full seperate window.</span></button>
           </div> 
                
          <div class="timer">
@@ -1060,11 +1092,11 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             console.log("body loaded");
             video_player = document.getElementById("video");
             video_player.setAttribute("src", video_directory[video_index]);
-            
             video_player.volume = 0.2;
             video_player.currentSrc();
             video_player.currentTime();
-            
+            timer.start(10)
+                        
            
         }
         
@@ -1420,4 +1452,3 @@ $(document).ready(function(e)
 </script>
 
 </body>
-
